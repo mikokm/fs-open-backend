@@ -33,7 +33,7 @@ app.get('/api/persons', (req, res) => {
 app.post('/api/persons', (req, res, next) => {
   let body = req.body
   if (!body.name || !body.number) {
-    res.status(400).send({ error: "Name or number missing" })
+    res.status(400).send({ error: 'Name or number missing' })
     return
   }
   const person = new Person({
@@ -77,7 +77,7 @@ app.put('/api/persons/:id', (req, res, next) => {
 
 app.delete('/api/persons/:id', (req, res, next) => {
   Person.findByIdAndRemove(req.params.id)
-    .then(result => {
+    .then(() => {
       res.status(204).end()
     })
     .catch(error => next(error))
